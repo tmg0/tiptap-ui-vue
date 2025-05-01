@@ -5,6 +5,7 @@ import { EditorContent } from '@tiptap/vue-3'
 import { Redo2, Undo2 } from 'lucide-vue-next'
 import { EditorContextProvider, UndoRedoButton } from 'tiptap-ui-vue'
 import TiptapHeadingDropdownMenu from './components/tiptap/HeadingDropdownMenu.vue'
+import TiptapListDropdownMenu from './components/tiptap/ListDropdownMenu.vue'
 import { useTiptap } from './composables/useTiptap'
 
 const { editor } = useTiptap()
@@ -12,7 +13,7 @@ const { editor } = useTiptap()
 
 <template>
   <EditorContextProvider :editor="editor">
-    <div class="flex gap-1 h-8 items-center justify-center my-1">
+    <div class="flex gap-1 items-center justify-center shadow py-1">
       <UndoRedoButton action="undo">
         <template #default="{ isHistoryActionDisabled }">
           <Button variant="ghost" size="icon" :disabled="isHistoryActionDisabled()" class="w-8 h-8 cursor-pointer">
@@ -29,14 +30,13 @@ const { editor } = useTiptap()
         </template>
       </UndoRedoButton>
 
-      <div class="h-3/5">
+      <div class="h-4">
         <Separator orientation="vertical" />
       </div>
 
       <TiptapHeadingDropdownMenu />
+      <TiptapListDropdownMenu />
     </div>
-
-    <Separator />
 
     <EditorContent :editor="editor" class="w-xl mx-auto p-12" />
   </EditorContextProvider>
