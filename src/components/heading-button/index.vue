@@ -38,15 +38,37 @@ function toggleHeading(level: Level): void {
   }
 }
 
-function isHeadingActive(level: Level): boolean {
+function isHeadingActive() {
   if (!editor)
     return false
-  return editor.isActive?.('heading', { level })
+  return editor.isActive?.('heading', { level: props.level })
+}
+
+function isHeadingButtonDisabled() {
+  if (!editor)
+    return true
+  if (props.disabled)
+    return true
+  if (!canToggleHeading())
+    return true
+  return false
+}
+
+function canToggleHeading() {
+  if (!editor)
+    return false
+
+  try {
+    return editor.can().toggleNode('heading', 'paragraph', { level: props.level })
+  }
+  catch {
+    return false
+  }
 }
 </script>
 
 <template>
   <Component :is="as" @click="handleClick">
-    <slot :is-heading-active="isHeadingActive" />
+    <slot :is-heading-active="isHeadingActive" :is-heading-button-disabled="isHeadingButtonDisabled" />
   </Component>
 </template>
