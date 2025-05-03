@@ -2,8 +2,8 @@
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { EditorContent } from '@tiptap/vue-3'
-import { Redo2, Undo2 } from 'lucide-vue-next'
-import { EditorContextProvider, UndoRedoButton } from 'tiptap-ui-vue'
+import { ImagePlus, Redo2, Undo2 } from 'lucide-vue-next'
+import { EditorContextProvider, ImageUploadButton, UndoRedoButton } from 'tiptap-ui-vue'
 import TiptapHeadingDropdownMenu from './components/tiptap/HeadingDropdownMenu.vue'
 import TiptapListDropdownMenu from './components/tiptap/ListDropdownMenu.vue'
 import { useTiptap } from './composables/useTiptap'
@@ -36,6 +36,12 @@ const { editor } = useTiptap()
 
       <TiptapHeadingDropdownMenu />
       <TiptapListDropdownMenu />
+
+      <ImageUploadButton>
+        <Button variant="ghost" size="icon" class="w-8 h-8 cursor-pointer">
+          <ImagePlus />
+        </Button>
+      </ImageUploadButton>
     </div>
 
     <EditorContent :editor="editor" class="w-xl mx-auto p-12" />
