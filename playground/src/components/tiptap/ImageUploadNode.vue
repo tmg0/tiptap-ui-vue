@@ -8,17 +8,21 @@ const props = defineProps<NodeViewProps>()
 
 <template>
   <ImageUploadNodeComponent v-bind="props">
-    <div class="border bg-zinc-50 rounded-lg py-4 flex flex-col w-full items-center cursor-pointer">
-      <ImageUp class="size-8 mb-2" />
+    <template #default="{ src }">
+      <img v-if="src" :src="src" class="block rounded">
 
-      <div>
-        <a>Click to upload</a>
-        <span> or drap and drop</span>
-      </div>
+      <div v-else class="border bg-zinc-50 rounded py-4 flex flex-col w-full items-center cursor-pointer">
+        <ImageUp class="size-8 mb-2" />
 
-      <div class="text-xs text-muted-foreground">
-        Maximum file size 5 Mb
+        <div>
+          <a>Click to upload</a>
+          <span> or drap and drop</span>
+        </div>
+
+        <div class="text-xs text-muted-foreground">
+          Maximum file size 5 Mb
+        </div>
       </div>
-    </div>
+    </template>
   </ImageUploadNodeComponent>
 </template>

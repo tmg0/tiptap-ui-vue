@@ -7,6 +7,17 @@ import { ImageUploadNode } from 'tiptap-ui-vue'
 import { onUnmounted } from 'vue'
 import ImageUploadNodeComponent from '../components/tiptap/ImageUploadNode.vue'
 
+function blobToBase64(blob: Blob) {
+  return new Promise<string>((resolve, reject) => {
+    const fr = new FileReader()
+    fr.onload = (e) => {
+      resolve(e.target!.result as string)
+    }
+    fr.onerror = reject
+    fr.readAsDataURL(blob)
+  })
+}
+
 export function useTiptap() {
   const editor = new Editor({
     extensions: [
@@ -17,8 +28,11 @@ export function useTiptap() {
 
       ImageUploadNode.configure({
         children: ImageUploadNodeComponent,
-        upload(files: any) {
-          console.log(files)
+        async upload(files: File[] = []) {
+          const [file] = files
+          if (!file)
+            return ''
+          return blobToBase64(file)
         },
       }),
     ],

@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const domRef = ref()
+const src = ref('')
 
 useDropZone(domRef, {
   onDrop: handleUpload,
@@ -31,13 +32,15 @@ const { open, onChange } = useFileDialog({
 
 onChange(handleUpload)
 
-function handleUpload(files: File[] | FileList | null) {
-  props.extension.options.upload(files)
+async function handleUpload(files: File[] | FileList | null) {
+  if (!files?.length)
+    return
+  src.value = await props.extension.options.upload(files)
 }
 </script>
 
 <template>
   <NodeViewWrapper ref="domRef" :as="as" @click="open">
-    <slot />
+    <slot :src="src" />
   </NodeViewWrapper>
 </template>
