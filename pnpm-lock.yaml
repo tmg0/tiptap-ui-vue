@@ -45,6 +45,9 @@ importers:
       '@tiptap/extension-image':
         specifier: ^2.11.9
         version: 2.11.9(@tiptap/core@2.11.9(@tiptap/pm@2.11.9))
+      '@tiptap/extension-link':
+        specifier: ^2.11.9
+        version: 2.11.9(@tiptap/core@2.11.9(@tiptap/pm@2.11.9))(@tiptap/pm@2.11.9)
       '@tiptap/extension-task-item':
         specifier: ^2.11.9
         version: 2.11.9(@tiptap/core@2.11.9(@tiptap/pm@2.11.9))(@tiptap/pm@2.11.9)
@@ -998,6 +1001,12 @@ packages:
     resolution: {integrity: sha512-xLQW6OtOwTEOkyvEX0jQcbm4kfjl1uOLMJ5daHolCR3DiEDWoxYrZrs2lt467nf5Sz4/50MQqGuZw8pVfWWxqg==}
     peerDependencies:
       '@tiptap/core': ^2.7.0
+
+  '@tiptap/extension-link@2.11.9':
+    resolution: {integrity: sha512-gi1UonACmQ/T81QdpIociNEIFPr9h6CKoMxfdZgYRrVWMsZuANuXooSjL8d8OirzWkPHxmbhEMyWjcTAV+HYgw==}
+    peerDependencies:
+      '@tiptap/core': ^2.7.0
+      '@tiptap/pm': ^2.7.0
 
   '@tiptap/extension-list-item@2.11.9':
     resolution: {integrity: sha512-57VO0Joe8WEEz2ypxY64TYx4KenFaqYnhrTLsWUvlearpBXbTFc8IaI/rdLubgJlEE5Q3e+NirCyQSLCE8a2Zg==}
@@ -2084,6 +2093,9 @@ packages:
 
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
+
+  linkifyjs@4.2.0:
+    resolution: {integrity: sha512-pCj3PrQyATaoTYKHrgWRF3SJwsm61udVh+vuls/Rl6SptiDhgE7ziUIudAedRY9QEfynmM7/RmLEfPUyw1HPCw==}
 
   local-pkg@1.1.1:
     resolution: {integrity: sha512-WunYko2W1NcdfAFpuLUoucsgULmgDBRkdxHxWQ7mK0cQqwPiy8E1enjuRBrhLtZkB5iScJ1XIPdhVEFK8aOLSg==}
@@ -3579,6 +3591,12 @@ snapshots:
     dependencies:
       '@tiptap/core': 2.11.9(@tiptap/pm@2.11.9)
 
+  '@tiptap/extension-link@2.11.9(@tiptap/core@2.11.9(@tiptap/pm@2.11.9))(@tiptap/pm@2.11.9)':
+    dependencies:
+      '@tiptap/core': 2.11.9(@tiptap/pm@2.11.9)
+      '@tiptap/pm': 2.11.9
+      linkifyjs: 4.2.0
+
   '@tiptap/extension-list-item@2.11.9(@tiptap/core@2.11.9(@tiptap/pm@2.11.9))':
     dependencies:
       '@tiptap/core': 2.11.9(@tiptap/pm@2.11.9)
@@ -4741,6 +4759,8 @@ snapshots:
   linkify-it@5.0.0:
     dependencies:
       uc.micro: 2.1.0
+
+  linkifyjs@4.2.0: {}
 
   local-pkg@1.1.1:
     dependencies:

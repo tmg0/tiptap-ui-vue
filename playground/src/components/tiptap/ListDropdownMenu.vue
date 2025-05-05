@@ -9,7 +9,12 @@ const editor = useEditorContext()
 const isOpen = ref(false)
 
 function isActive() {
-  return editor.isActive('bulletList') || editor.isActive('orderedList') || editor.isActive('todoList')
+  const TASK_TYPES = ['bulletList', 'orderedList', 'taskList']
+  for (const k in TASK_TYPES) {
+    if (editor.isActive(k))
+      return true
+  }
+  return false
 }
 </script>
 

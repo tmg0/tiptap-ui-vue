@@ -13,37 +13,41 @@ const { editor } = useTiptap()
 
 <template>
   <EditorContextProvider :editor="editor">
-    <div class="flex gap-1 items-center justify-center shadow py-1">
-      <UndoRedoButton action="undo">
-        <template #default="{ isHistoryActionDisabled }">
-          <Button variant="ghost" size="icon" :disabled="isHistoryActionDisabled()" class="w-8 h-8 cursor-pointer">
-            <Undo2 />
-          </Button>
-        </template>
-      </UndoRedoButton>
+    <div>
+      <div class="flex gap-1 items-center justify-center shadow py-1 fixed top-0 w-full bg-white z-10">
+        <UndoRedoButton action="undo">
+          <template #default="{ isHistoryActionDisabled }">
+            <Button variant="ghost" size="icon" :disabled="isHistoryActionDisabled()" class="w-8 h-8 cursor-pointer">
+              <Undo2 />
+            </Button>
+          </template>
+        </UndoRedoButton>
 
-      <UndoRedoButton action="redo">
-        <template #default="{ isHistoryActionDisabled }">
-          <Button variant="ghost" size="icon" :disabled="isHistoryActionDisabled()" class="w-8 h-8 cursor-pointer">
-            <Redo2 />
-          </Button>
-        </template>
-      </UndoRedoButton>
+        <UndoRedoButton action="redo">
+          <template #default="{ isHistoryActionDisabled }">
+            <Button variant="ghost" size="icon" :disabled="isHistoryActionDisabled()" class="w-8 h-8 cursor-pointer">
+              <Redo2 />
+            </Button>
+          </template>
+        </UndoRedoButton>
 
-      <div class="h-4">
-        <Separator orientation="vertical" />
+        <div class="h-4">
+          <Separator orientation="vertical" />
+        </div>
+
+        <TiptapHeadingDropdownMenu />
+        <TiptapListDropdownMenu />
+
+        <ImageUploadButton>
+          <Button variant="ghost" size="icon" class="w-8 h-8 cursor-pointer">
+            <ImagePlus />
+          </Button>
+        </ImageUploadButton>
       </div>
 
-      <TiptapHeadingDropdownMenu />
-      <TiptapListDropdownMenu />
-
-      <ImageUploadButton>
-        <Button variant="ghost" size="icon" class="w-8 h-8 cursor-pointer">
-          <ImagePlus />
-        </Button>
-      </ImageUploadButton>
+      <div class="mt-8">
+        <EditorContent :editor="editor" class="w-xl mx-auto p-12" />
+      </div>
     </div>
-
-    <EditorContent :editor="editor" class="w-xl mx-auto p-12" />
   </EditorContextProvider>
 </template>
