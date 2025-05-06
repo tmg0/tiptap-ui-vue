@@ -6,6 +6,7 @@ import { EditorContent } from '@tiptap/vue-3'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Code, FileCode2, ImagePlus, Italic, Redo2, Strikethrough, TextQuote, Underline, Undo2 } from 'lucide-vue-next'
 import { EditorContextProvider, ImageUploadButton, MarkButton, NodeButton, TextAlignButton, UndoRedoButton } from 'tiptap-ui-vue'
 import TiptapHeadingDropdownMenu from './components/tiptap/HeadingDropdownMenu.vue'
+import TiptapLinkPopover from './components/tiptap/LinkPopover.vue'
 import TiptapListDropdownMenu from './components/tiptap/ListDropdownMenu.vue'
 import { useTiptap } from './composables/useTiptap'
 
@@ -98,6 +99,8 @@ const { editor } = useTiptap()
             </Toggle>
           </template>
         </MarkButton>
+
+        <TiptapLinkPopover />
 
         <div class="h-4">
           <Separator orientation="vertical" />

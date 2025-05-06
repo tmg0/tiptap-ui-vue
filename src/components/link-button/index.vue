@@ -1,22 +1,7 @@
 <script setup lang="ts">
 import { useEditorContext } from '../../composables/useEditorContext'
 
-interface Props {
-  as?: keyof HTMLElementTagNameMap
-  disabled?: boolean
-}
-
-withDefaults(defineProps<Props>(), {
-  as: 'div',
-  disabled: false,
-})
-
-const emit = defineEmits(['click'])
 const editor = useEditorContext()
-
-function handleClick(e: MouseEvent) {
-  emit('click', e)
-}
 
 function isLinkActive() {
   if (!editor)
@@ -34,10 +19,20 @@ function setLink(href: string) {
     .setLink({ href })
     .run()
 }
+
+function unsetLink() {
+  if (!editor)
+    return
+  editor.commands.unsetLink()
+}
+
+function getLinkHref() {
+  if (!editor)
+    return ''
+  return editor.getAttributes('link').href
+}
 </script>
 
 <template>
-  <Component :is="as" @click="handleClick">
-    <slot :is-link-active="isLinkActive" :set-link="setLink" />
-  </Component>
+  <slot :is-link-active="isLinkActive" :set-link="setLink" :unset-link="unsetLink" :get-link-href="getLinkHref" />
 </template>

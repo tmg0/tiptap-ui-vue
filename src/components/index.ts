@@ -3,6 +3,7 @@ import HeadingButton from './heading-button/index.vue'
 import ImageUploadButton from './image-upload-button/index.vue'
 import { ImageUploadNode } from './image-upload-node/extension'
 import ImageUploadNodeComponent from './image-upload-node/index.vue'
+import LinkButton from './link-button/index.vue'
 import ListButton from './list-button/index.vue'
 import MarkButton from './mark-button/index.vue'
 import NodeButton from './node-button/index.vue'
@@ -15,6 +16,7 @@ export {
   ImageUploadButton,
   ImageUploadNode,
   ImageUploadNodeComponent,
+  LinkButton,
   ListButton,
   MarkButton,
   NodeButton,

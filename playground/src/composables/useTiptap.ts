@@ -44,11 +44,7 @@ export function useTiptap() {
         },
       }),
 
-      Link.configure({
-        HTMLAttributes: {
-          class: 'cursor-pointer',
-        },
-      }),
+      Link.configure({ openOnClick: false }),
     ],
     editorProps: {
       attributes: {
