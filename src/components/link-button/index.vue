@@ -9,14 +9,22 @@ function isLinkActive() {
   return editor.isActive('link')
 }
 
-function setLink(href: string) {
+function setLink(url: string) {
   if (!editor)
     return
+
+  const { from, to } = editor.state.selection
+  const text = editor.state.doc.textBetween(from, to)
+
   editor
     .chain()
     .focus()
     .extendMarkRange('link')
-    .setLink({ href })
+    .insertContent({
+      type: 'text',
+      text: text || url,
+      marks: [{ type: 'link', attrs: { href: url } }],
+    })
     .run()
 }
 

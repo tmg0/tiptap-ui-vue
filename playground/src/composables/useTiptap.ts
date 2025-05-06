@@ -1,6 +1,8 @@
 import { Highlight } from '@tiptap/extension-highlight'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
+import { Subscript } from '@tiptap/extension-subscript'
+import { Superscript } from '@tiptap/extension-superscript'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { TaskList } from '@tiptap/extension-task-list'
 import { TextAlign } from '@tiptap/extension-text-align'
@@ -33,6 +35,8 @@ export function useTiptap() {
       TaskItem.configure({ nested: true }),
       Highlight.configure({ multicolor: true }),
       Image,
+      Superscript,
+      Subscript,
 
       ImageUploadNode.configure({
         children: ImageUploadNodeComponent,

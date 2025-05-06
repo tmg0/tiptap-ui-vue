@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Toggle } from '@/components/ui/toggle'
 import { EditorContent } from '@tiptap/vue-3'
-import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Code, FileCode2, ImagePlus, Italic, Redo2, Strikethrough, TextQuote, Underline, Undo2 } from 'lucide-vue-next'
+import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Code, FileCode2, ImagePlus, Italic, Redo2, Strikethrough, Subscript, Superscript, TextQuote, Underline, Undo2 } from 'lucide-vue-next'
 import { EditorContextProvider, ImageUploadButton, MarkButton, NodeButton, TextAlignButton, UndoRedoButton } from 'tiptap-ui-vue'
 import TiptapHeadingDropdownMenu from './components/tiptap/HeadingDropdownMenu.vue'
 import TiptapLinkPopover from './components/tiptap/LinkPopover.vue'
@@ -101,6 +101,26 @@ const { editor } = useTiptap()
         </MarkButton>
 
         <TiptapLinkPopover />
+
+        <div class="h-4">
+          <Separator orientation="vertical" />
+        </div>
+
+        <MarkButton type="superscript">
+          <template #default="{ isMarkActive }">
+            <Toggle size="sm" :model-value="isMarkActive()" class="cursor-pointer">
+              <Superscript />
+            </Toggle>
+          </template>
+        </MarkButton>
+
+        <MarkButton type="subscript">
+          <template #default="{ isMarkActive }">
+            <Toggle size="sm" :model-value="isMarkActive()" class="cursor-pointer">
+              <Subscript />
+            </Toggle>
+          </template>
+        </MarkButton>
 
         <div class="h-4">
           <Separator orientation="vertical" />
