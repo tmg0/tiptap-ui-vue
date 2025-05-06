@@ -10,7 +10,7 @@ const isOpen = ref(false)
 
 function isActive() {
   const TASK_TYPES = ['bulletList', 'orderedList', 'taskList']
-  for (const k in TASK_TYPES) {
+  for (const k of TASK_TYPES) {
     if (editor.isActive(k))
       return true
   }
