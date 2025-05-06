@@ -26,6 +26,10 @@ function handleUnsetLink(ctx: any) {
   ctx.unsetLink()
   isOpen.value = false
 }
+
+function handleOpenLink() {
+  window.open(url.value, '_blank')
+}
 </script>
 
 <template>
@@ -47,7 +51,7 @@ function handleUnsetLink(ctx: any) {
             <Separator orientation="vertical" />
           </div>
 
-          <Button variant="ghost" size="icon" :disabled="!url" class="w-8 h-8 mr-1 cursor-pointer">
+          <Button variant="ghost" size="icon" :disabled="!url" class="w-8 h-8 mr-1 cursor-pointer" @click="handleOpenLink()">
             <ExternalLink />
           </Button>
           <Button variant="ghost" size="icon" :disabled="!url" class="w-8 h-8 cursor-pointer" @click="handleUnsetLink(ctx)">
