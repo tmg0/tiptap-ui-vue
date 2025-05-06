@@ -5,13 +5,12 @@ type ListType = 'bulletList' | 'orderedList' | 'taskList'
 
 interface Props {
   as?: keyof HTMLElementTagNameMap
-  type?: ListType
+  type: ListType
   disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   as: 'div',
-  type: 'bulletList',
   disabled: false,
 })
 
@@ -38,7 +37,7 @@ function toggleList() {
       editor.chain().focus().toggleOrderedList().run()
       break
     case 'taskList':
-      editor.chain().focus().toggleList('taskList', 'taskItem').run()
+      editor.chain().focus().toggleTaskList().run()
       break
   }
 }
